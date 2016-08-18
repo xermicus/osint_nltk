@@ -2,9 +2,14 @@ import collections
 from nltk.corpus import stopwords
 from nltk.collocations import BigramCollocationFinder
 from nltk.metrics import BigramAssocMeasures
+from nltk.tokenize import word_tokenize
 
 def bag_of_words(words):
     return dict([(word, True) for word in words])
+
+def token_of_words(sentence):
+    words = word_tokenize(sentence)
+    return bag_of_words(words)
 
 def bag_of_words_not_in_set(words, badwords):
     return bag_of_words(set(words) - set(badwords))
